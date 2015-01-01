@@ -13,6 +13,13 @@ Installing
 To download required libraries, run the "download.sh" script within "js/libs".
 
 
+Testing
+-------
+
+Requires buster.js
+
+In one shell run "buster-server"; connect to the local server using a browser; then run "buster-test" in a separate shell.
+
 License
 -------
 
