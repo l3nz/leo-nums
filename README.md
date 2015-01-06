@@ -3,6 +3,9 @@ leo-nums
 
 Leo's numbers - a little number sorting game for first grade children.
 
+You can find it at [http://demo.loway.ch/leo-nums/](http://demo.loway.ch/leo-nums/)
+
+
 The aim of the game is to sort numbers from 1 to 20. When all are sorted, you get an "OK" message.
 Number sortings are touch-enabled, so you can play this for a tablet or anything.
 
