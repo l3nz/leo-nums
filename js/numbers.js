@@ -27,6 +27,7 @@
 
       var html = "";
       for ( var i =0; i < BRAIN.length; i++ ) {
+        html += "<img src='" + BRAIN[i].icon +"' width='30px'>";
         html += "<a href='javascript:startGame(" + i + ")'>" + BRAIN[i].exercise + "</a><br>";
       }
       $( "#esercizi" ).html( html );
@@ -80,8 +81,7 @@
       $("#tempo").html( (now() - tempoIniziale) + " s." );
       
       if ( seqOk() ) {
-        $("#state").html( "BRAVO LEO ");
-        alert( "BRAVO!!!!" );
+        jump( "modal-text" );
       } 
     }
 
@@ -95,6 +95,13 @@
       return Math.floor( d.getTime() / 1000);
     }
 
+    function jump(h) {
+      var url = location.href;              
+      location.href = "#" + h;                
+      history.replaceState(null,null,url);
+    }
+
+
 var nMosse = 0;
 var tempoIniziale = 0;
 
@@ -105,9 +112,10 @@ function startGame( num ) {
   var brain = BRAIN[num];
 
   $("#n_mosse").html( "0" );
-  $("#state").html( "" );
+  $("#state").html( "<img src='" + brain.icon + "' height='80px'>" );
   $("#tempo").html( "" );
-  $("#gioco").html( brain.exercise )
+  $("#gioco").html( brain.exercise );
+
 
   gridster.remove_all_widgets();
 

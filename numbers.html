@@ -5,25 +5,30 @@
   <title>Leo's numbers</title>
   <link rel="stylesheet" type="text/css" href="./js/numbers.css">
   <link rel="stylesheet" type="text/css" href="./js/libs/jquery.gridster.min.css">
+  <link rel="stylesheet" type="text/css" href="./js/modal/modal.css">
+  
 </head>
 
 <body>
 
 
-<table border='1'>
+<table border='0' cellspacing="10">
 <tr>
-  <td colspan="2">
+  <td colspan="2" valign="middle" align="center">
     
-    Gioco: <span id="gioco">-</span>
-    Tempo: <span id="tempo">-</span> - 
-    N. mosse: <span id="n_mosse">-</span> - 
     <span id="state"></span>
 
+    &nbsp;
+
+    Gioco: <span id="gioco">-</span>
+    Tempo: <span id="tempo">-</span> - 
+    N. mosse: <span id="n_mosse">-</span> 
+    
   </td>
 </tr>
 
 <tr>
-  <td valign="top">
+  <td valign="top" id="mainlogo">
       <div class="gridster">
           <ul></ul>
       </div>
@@ -32,14 +37,36 @@
   <td valign="top">
     <h3>Giochi</h3>
     <div id="esercizi"></div>
+    <br >
+    <img src="https://openclipart.org/people/nicubunu/nicubunu-Game-baddie-Candy.svg" width="100px"/>
   </td>
 </tr>
 </table>
 
+
+    <!-- MODAL -->
+    <section class="modal--show" id="modal-text" tabindex="-1"
+            role="dialog" aria-labelledby="modal-label" aria-hidden="true">
+
+        <div class="modal-inner">
+            <header id="modal-label"> <h1>Bravo bravissimo!!!</h1> </header>
+            <div class="modal-content">
+              <img src="https://openclipart.org/people/vectorsme/Lion-Cartoon.svg" height="200"/>
+            </div>
+            <footer> Ma proprio bravo! </footer>
+        </div>
+
+        <a href="#!" class="modal-close" title="Close this modal" data-close="Close"
+            data-dismiss="modal">?</a>
+    </section>
+
+    <!-- SCRIPT -->
     <script type="text/javascript" src="./js/libs/jquery-1.11.1.js"></script>
     <script src="./js/libs/jquery.gridster.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="./js/brain.js" type="text/javascript" charset="utf-8"></script>
     <script src="./js/numbers.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./js/modal/modal.js" type="text/javascript" charset="utf-8"></script>
+    
     <div id="log" style="visibility: hidden;"></div>
 
 </body>

@@ -42,7 +42,6 @@ body {
 
 .gridster {
     margin: 0 auto;
-
     opacity: .8;
 
     -webkit-transition: opacity .6s;
@@ -60,6 +59,7 @@ body {
 .gridster .player {
     background: #BBB;
 }
+
 
 
 .gridster .preview-holder {
@@ -84,3 +84,8 @@ body {
     color: red;
     font-size: 24px;
 }
+
+#mainlogo {
+  b-ackground: url(https://openclipart.org/people/pixabella/pixabella-Green-Valentine-Frog-with-pink-hearts.svg) no-repeat top center;
+}
+
