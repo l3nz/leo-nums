@@ -23,6 +23,16 @@
             }
           }
       }).data('gridster');
+
+
+      var html = "";
+      for ( var i =0; i < BRAIN.length; i++ ) {
+        html += "<a href='javascript:startGame(" + i + ")'>" + BRAIN[i].exercise + "</a><br>";
+      }
+      $( "#esercizi" ).html( html );
+
+
+
     });
 
     function addLog( s ) {
@@ -88,27 +98,67 @@
 var nMosse = 0;
 var tempoIniziale = 0;
 
-function startGame() {
+function startGame( num ) {
 
   nMosse = 0;
   tempoIniziale = now();
+  var brain = BRAIN[num];
 
   $("#n_mosse").html( "0" );
   $("#state").html( "" );
   $("#tempo").html( "" );
+  $("#gioco").html( brain.exercise )
 
   gridster.remove_all_widgets();
 
-      elems = [];
-      for ( i = 0; i < ELEMS; i++ ) {
-        elems[elems.length]=i;
-      }
+  var elems = makeSeq( brain );
 
-      shuffle(elems);
-
-      for ( j = 0; j < elems.length; j++ ) {
-        var i = elems[j];
-        widget = ["<li id='" + i + "' class='item'>" +  (i+1) +"</li>", 1, 1];
-        gridster.add_widget.apply(gridster, widget);
-      }
+  for ( j = 0; j < elems.length; j++ ) {
+    var i = elems[j];
+    var blocks = Math.floor(i.lbl.length / 3) + 1;
+    widget = ["<li id='" + i.pos + "' class='item'>" +  i.lbl +"</li>", blocks, 1];
+    gridster.add_widget.apply(gridster, widget);
   }
+}
+
+/**
+ * 
+**/
+
+function makeSeq( brain ) {
+  var seq = [];
+
+  if ( brain.numeric ) {
+    seq = makeSeqNum( brain.min_num, brain.max_num, brain.n_items );
+  } else {
+    seq = makeSeqText( brain.text );
+  }
+
+  return seq;
+
+}
+
+function makeSeqNum( min, max, num ) {
+
+  var seq = [];
+  for ( i = 0; i < max-min+1; i++ ) {
+    seq[i]= { pos: i, lbl: "" + (i + min) };
+  }
+
+  shuffle( seq );
+
+  if ( seq.length > num ) {
+    seq = seq.slice(0, num);
+  }
+  return seq;
+
+}
+
+function makeSeqText( txt ) {
+  var seq = [];
+  for ( i = 0; i < txt.length; i++ ) {
+    seq[i]= { pos: i, lbl: txt[i] };
+  }
+  shuffle( seq );
+  return seq;
+}
