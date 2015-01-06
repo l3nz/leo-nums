@@ -1,7 +1,7 @@
     var gridster;
 
     var WIDTH = 6;
-    var ELEMS = 20;
+    var ELEMS = 4;
 
     $(function(){
 
@@ -26,7 +26,12 @@
     });
 
     function addLog( s ) {
-      log.innerHTML = s + "<br >" + log.innerHTML;
+
+      if ( this.buster ) {
+        buster.log( s );
+      } else {
+        log.innerHTML = s + "<br >" + log.innerHTML;
+      }
     }
 
     function seqOk( ) {
@@ -37,20 +42,24 @@
     * Check whether a sequence is okay.
     */
     function isSeqOk( arSeq ) {
-        var boOK = true;
-        for (var i = 0; i < arSeq.length; i++) {
-          // addLog( "S:" + i + " pos " + arSeq[i].pos + " id " + arSeq[i].id );
-        
 
-          if ( arSeq[i].pos != arSeq[i].id ) {
-            boOK = false;
+      addLog( JSON.stringify(arSeq) );
+
+      arSeq.sort(function(a,b) { return (a.pos) - (b.pos) } );
+
+      var l = arSeq.length;
+      if ( l > 1) {
+        for (var i = 1; i < l; i++) {
+          var posIncr = (arSeq[i].pos > arSeq[i-1].pos);
+          var idIncr  = ( arSeq[i].id > arSeq[i-1].id );
+          //buster.log( "Pos" + i + " PI:" + posIncr + " ID:" + idIncr);
+          if ( !( posIncr && idIncr) ) {
+            return false;
           }
         }
-        return boOK;
+      }
+      return true;
     }
-
-
-
 
     function updateState() {
 
