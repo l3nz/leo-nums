@@ -6,6 +6,11 @@ Leo's numbers - a little number sorting game for first grade children.
 The aim of the game is to sort numbers from 1 to 20. When all are sorted, you get an "OK" message.
 Number sortings are touch-enabled, so you can play this for a tablet or anything.
 
+You can define multiple exercises through its brains file:
+
+* Numeric exercises, where you have to sort all numbers between min and max, or a subset of them
+* Text exercises, where you have to sort phrases.
+
 
 Installing
 ----------
